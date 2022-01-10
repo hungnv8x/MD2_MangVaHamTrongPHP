@@ -9,6 +9,6 @@ function demKyTu($str, $x)
     }
     return $count;
 }
-$str="abcdabcaa";
+$str="abcdabcaaa";
 $x = "a";
 echo demKyTu($str,$x);

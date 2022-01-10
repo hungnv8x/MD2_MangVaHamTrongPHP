@@ -24,13 +24,8 @@ function loadRegister($fileName)
     return json_decode($jsonData, true);
 }
 
-function saveDataJson($fileName, $name, $email, $phone)
+function saveDataJson($fileName, $contact)
 {
-    $contact = [
-        "name" => $name,
-        "email" => $email,
-        "phone" => $phone
-    ];
 
     $arrData = loadRegister($fileName);
     $arrData[] = $contact;
@@ -81,7 +76,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (checkUser($name)) {
             $err = "Username đã tồn tại";
         } else {
-            saveDataJson("data.json", $name, $email, $phone);
+            $contact = [
+                "name" => $name,
+                "email" => $email,
+                "phone" => $phone
+            ];
+            saveDataJson("data.json", $contact);
         }
     }
 }
